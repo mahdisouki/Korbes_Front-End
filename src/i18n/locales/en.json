@@ -1,0 +1,1235 @@
+{
+  "common": {
+    "skip": "Skip to content",
+    "demo": "Demonstration",
+    "duration": "Duration",
+    "price": "Price",
+    "discover": "Discover",
+    "backHome": "Back to home",
+    "backTreatments": "Back to treatments",
+    "close": "Close",
+    "photoBy": "Photo: {{author}} · {{license}}",
+    "required": "Required field"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "The station",
+    "treatments": "Treatments",
+    "gallery": "Gallery",
+    "practical": "Practical information",
+    "contact": "Contact",
+    "cta": "Discover our treatments",
+    "language": "Language",
+    "primary": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "brand": "Thermal station",
+    "homeLabel": "Korbous Thermal Station, home",
+    "vouchers": "Vouchers",
+    "account": "My account",
+    "login": "Log in",
+    "logout": "Log out",
+    "admin": "Administration"
+  },
+  "meta": {
+    "home": {
+      "title": "Korbous Thermal Station",
+      "description": "Thermal water, Cap Bon cliffs and treatments in Korbous, Tunisia. An information site, with no booking."
+    },
+    "about": {
+      "title": "The station — Korbous",
+      "description": "Setting, springs and published characteristics of the thermal water at Korbous."
+    },
+    "treatments": {
+      "title": "Treatments — Korbous",
+      "description": "Demonstration catalogue of treatments at the Korbous thermal station."
+    },
+    "treatment": {
+      "title": "{{name}} — Korbous",
+      "description": "Demonstration sheet: {{name}}."
+    },
+    "gallery": {
+      "title": "Gallery — Korbous",
+      "description": "Photographs of the village, springs and coast of Korbous."
+    },
+    "practical": {
+      "title": "Practical information — Korbous",
+      "description": "Access, sample hours and frequent questions about the Korbous station."
+    },
+    "contact": {
+      "title": "Contact — Korbous",
+      "description": "Write to the Korbous thermal station. The form stays in your browser."
+    },
+    "notFound": {
+      "title": "Page not found — Korbous",
+      "description": "This page does not exist on the Korbous thermal station website."
+    },
+    "vouchers": {
+      "title": "Vouchers — Korbous",
+      "description": "Demonstration catalogue of vouchers for Korbous thermal station."
+    },
+    "purchase": {
+      "title": "{{name}} — Voucher",
+      "description": "Demonstration voucher purchase. No real payment."
+    },
+    "account": {
+      "title": "My account — Korbous",
+      "description": "Demonstration customer account, stored in this browser."
+    },
+    "register": {
+      "title": "Create an account — Korbous",
+      "description": "Demonstration registration. The account stays on this device."
+    },
+    "login": {
+      "title": "Log in — Korbous",
+      "description": "Open the demonstration account stored in this browser."
+    },
+    "forgot": {
+      "title": "Password — Korbous",
+      "description": "Choose a new password for the demonstration account."
+    },
+    "guest": {
+      "title": "Find an order — Korbous",
+      "description": "Find a demonstration order with the email and the number."
+    },
+    "order": {
+      "title": "Order {{id}} — Korbous",
+      "missingTitle": "Order not found — Korbous",
+      "description": "Demonstration summary. The voucher is not sent."
+    },
+    "admin": {
+      "title": "Administration — Korbous",
+      "description": "Demonstration dashboard. The data stays in this browser."
+    }
+  },
+  "footer": {
+    "tagline": "Thermal water, cliffs and the Gulf of Tunis. A pause for care on Cap Bon.",
+    "disclaimer": "A presentation site. The account and voucher purchase are a demonstration in this browser: no real payment, no reservation at the station, and no medical advice. Hours, prices and testimonials marked as examples are not confirmed information.",
+    "rights": "© {{year}} Korbous Thermal Station",
+    "explore": "Explore",
+    "visit": "Plan your visit",
+    "credits": "Photo credits",
+    "source": "Water characteristics: publications of the Tunisian Office of Thermalism. Figures should be confirmed with the station."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Cap Bon · Tunisia",
+      "title": "Discover the benefits of the Korbous thermal station",
+      "subtitle": "Warm mineral water, ochre cliffs and the quiet of the Gulf of Tunis. For the length of a stay, the pace slows down.",
+      "primary": "Discover the station",
+      "secondary": "Discover our treatments",
+      "imageAlt": "Korbous, a white village between the cliff and the Mediterranean",
+      "scroll": "Scroll",
+      "facts": [
+        {
+          "label": "Published temperature",
+          "value": "59 °C",
+          "note": "Aïn Echfa"
+        },
+        {
+          "label": "From Tunis",
+          "value": "51 km",
+          "note": "via Hammam Lif"
+        },
+        {
+          "label": "The setting",
+          "value": "Sea and cliffs",
+          "note": "Gulf of Tunis"
+        }
+      ]
+    },
+    "intro": {
+      "eyebrow": "The station",
+      "title": "A hot spring at the edge of the Mediterranean",
+      "p1": "Korbous is a thermal station on Cap Bon, in the Nabeul governorate. The village steps down between the hill and the Gulf of Tunis, about 51 kilometres east of the capital via Hammam Lif.",
+      "p2": "In publications of the Office of Thermalism, its springs are described as known since antiquity. The water linked to the station — notably that of Aïn Echfa — is a hyperthermal water dominated by sodium chloride. This site informs; it does not replace medical advice.",
+      "link": "Read the presentation",
+      "imageAlt": "Corniche and white houses of Korbous along the gulf",
+      "statValue": "51 km",
+      "statLabel": "east of Tunis, via Hammam Lif"
+    },
+    "benefits": {
+      "eyebrow": "Thermal water",
+      "title": "What the water of Korbous shows",
+      "intro": "The points below repeat published data. They describe the water. They promise no result.",
+      "items": [
+        {
+          "title": "Hyperthermal water",
+          "text": "Aïn Echfa is classified as a hyperthermal water dominated by sodium chloride, with a published temperature of 59 °C and a pH of 7.5."
+        },
+        {
+          "title": "Mineralisation",
+          "text": "The published dry residue is 11,812 mg/l. Sodium and chlorides dominate, with calcium, magnesium and sulphates."
+        },
+        {
+          "title": "Where it meets the sea",
+          "text": "Several springs rise at the foot of the cliffs. Aïn El Atrous, about one kilometre north of the village, flows toward the Mediterranean."
+        },
+        {
+          "title": "A place of care",
+          "text": "Thermal documentation mentions a medicalised station and baths. A cure is decided with a health professional."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "Treatments",
+      "title": "Three ways to meet the water",
+      "intro": "A demonstration catalogue. Durations and prices are examples, in the absence of an official list published here.",
+      "all": "See all treatments"
+    },
+    "facilities": {
+      "eyebrow": "The place",
+      "title": "The village, the springs, the coast",
+      "items": [
+        {
+          "title": "The thermal village",
+          "text": "White houses, a corniche and an open view of the gulf: Korbous is walked as much as it receives treatments. The thermal establishment belongs to this landscape."
+        },
+        {
+          "title": "The springs",
+          "text": "Aïn Echfa, Aïn Sbia, Aïn El Atrous and Aïn Kalassira are among the most often cited springs. Spellings vary slightly between publications."
+        },
+        {
+          "title": "The Cap Bon shore",
+          "text": "Ochre cliffs, coves and scrub-covered hills follow the road that links the station to the sea."
+        }
+      ]
+    },
+    "gallery": {
+      "eyebrow": "Gallery",
+      "title": "Light, rock and water",
+      "text": "Photographs of Korbous and its shore, published under free licences. Treatment rooms are not shown: we show the place as it is seen.",
+      "cta": "Open the gallery"
+    },
+    "why": {
+      "eyebrow": "Why Korbous",
+      "title": "Three reasons to take the corniche",
+      "imageAlt": "Sunset over a cove on the Korbous coast",
+      "items": [
+        {
+          "title": "Between cliff and sea",
+          "text": "The station opens directly onto the Gulf of Tunis. The landscape is part of the stay."
+        },
+        {
+          "title": "Documented water",
+          "text": "The temperature, pH and mineralisation of Aïn Echfa are published. The figures should still be confirmed with the station."
+        },
+        {
+          "title": "Close to Tunis",
+          "text": "About an hour by road via Hammam Lif is enough to reach Cap Bon."
+        }
+      ]
+    },
+    "testimonials": {
+      "eyebrow": "Testimonials",
+      "title": "Voices written to illustrate a stay",
+      "notice": "Demonstration testimonials. They do not come from real visitors and do not describe a treatment result.",
+      "items": [
+        {
+          "quote": "The quiet of the corniche, early in the morning, is already worth the journey. You understand the place before you even enter the water.",
+          "name": "Leïla M.",
+          "detail": "Fictional content — Tunis"
+        },
+        {
+          "quote": "One day was enough to slow down: the white village, the sea just below, and a bath taken without hurry.",
+          "name": "Marek W.",
+          "detail": "Fictional content — Warsaw"
+        },
+        {
+          "quote": "Nothing spectacular, and that is precisely it. A shore, warm water, time.",
+          "name": "Inès C.",
+          "detail": "Fictional content — Nabeul"
+        }
+      ]
+    },
+    "location": {
+      "eyebrow": "Contact and access",
+      "title": "Coming to Korbous",
+      "text": "The station is on Cap Bon, in the Nabeul governorate. From Tunis, the road passes through Hammam Lif and then follows the coast.",
+      "addressLabel": "Address",
+      "address": "Korbous Thermal Station, Korbous, Cap Bon, Nabeul governorate, Tunisia",
+      "hoursLabel": "Hours",
+      "hours": "Example to confirm: Monday–Friday, 8:00–16:00",
+      "cta": "Write to us",
+      "info": "Practical information",
+      "mapLabel": "Map of Korbous"
+    }
+  },
+  "about": {
+    "heroTitle": "The Korbous thermal station",
+    "heroText": "A village on Cap Bon, hot springs, and water whose characteristics are published. What is not established is not invented.",
+    "heroAlt": "Cliffs and Mediterranean coast near Korbous",
+    "lead": "Korbous stands on a narrow passage between the hill and the sea. That contact — thermal water, rock, gulf — gives the station its character.",
+    "history": {
+      "eyebrow": "History",
+      "title": "Known since antiquity",
+      "p1": "Publications of the Office of Thermalism state that the spring of Aïn Echfa, at Korbous, was already known since the earliest antiquity.",
+      "p2": "Travel accounts associate the site with the Latin name Aquae Calidae Carpitanae. This page does not reconstruct a chronology: dates, founders and works that are not established here are not filled in by guesswork.",
+      "imageAlt": "White houses and minaret of Korbous on the hill"
+    },
+    "location": {
+      "eyebrow": "Location",
+      "title": "Cap Bon, facing the Gulf of Tunis",
+      "p": "Aïn Echfa lies at a published altitude of 5 metres, 51 km east of Tunis via Hammam Lif. Korbous is in the Nabeul governorate. The corniche follows the cliffs before dropping toward the village.",
+      "imageAlt": "Korbous seen from the coastal road, between sea and hill"
+    },
+    "water": {
+      "eyebrow": "The water",
+      "title": "Published characteristics",
+      "note": "Figures published for Aïn Echfa. They describe a reference analysis and should be confirmed with the station.",
+      "stats": [
+        {
+          "label": "Temperature",
+          "value": "59 °C"
+        },
+        {
+          "label": "pH",
+          "value": "7.5"
+        },
+        {
+          "label": "Published flow",
+          "value": "24 l/s"
+        },
+        {
+          "label": "Dry residue at 110 °C",
+          "value": "11,812 mg/l"
+        },
+        {
+          "label": "Classification",
+          "value": "Hyperthermal water dominated by sodium chloride"
+        }
+      ],
+      "text": "Official documents cite fields of treatment — rheumatology, dermatology, gynaecology — without this site turning them into promises. Medical advice comes before any cure. Aïn El Atrous, one kilometre to the north, is another hyperthermal sodium-chloride spring, with a published temperature of 58.6 °C."
+    },
+    "nature": {
+      "eyebrow": "Environment",
+      "title": "Cliffs, scrub and the Mediterranean",
+      "p": "The land falls to the sea in ochre cliffs. Coves, scrub and the light of the gulf make up the station’s setting. At Aïn El Atrous, hot water visibly meets the sea: where it leaves the rock, it is too hot for a direct bath.",
+      "imageAlt": "Cove and layered rock on the shore near Korbous",
+      "secondAlt": "Hills and a small cove on the Korbous coast"
+    },
+    "values": {
+      "eyebrow": "Approach",
+      "title": "Four attentions for this place",
+      "items": [
+        {
+          "title": "Pace",
+          "text": "A stay by the water, without an overloaded programme."
+        },
+        {
+          "title": "Clarity",
+          "text": "Sourced information, and examples clearly marked."
+        },
+        {
+          "title": "The site",
+          "text": "Cliffs, springs and shore are visited without damaging them."
+        },
+        {
+          "title": "Care",
+          "text": "Thermal water belongs in a health journey, never in a miracle promise."
+        }
+      ]
+    }
+  },
+  "treatments": {
+    "heroTitle": "Our treatments",
+    "heroText": "A catalogue presenting the kinds of care found at a thermal station. Each sheet is an example: duration and price are not an official list.",
+    "heroAlt": "Bathing in a hot spring at Korbous, where the water meets the sea",
+    "filters": {
+      "all": "All",
+      "baths": "Baths",
+      "showers": "Showers",
+      "body": "Body care",
+      "wellness": "Wellness"
+    },
+    "empty": "No treatment in this category.",
+    "count": "{{count}} treatments",
+    "notFoundTitle": "This treatment is not in the catalogue",
+    "notFoundText": "The link does not match any demonstration sheet.",
+    "benefitsTitle": "What this sheet illustrates",
+    "characteristicsTitle": "Characteristics",
+    "infoTitle": "Good to know",
+    "cta": "Request information",
+    "disclaimer": "Demonstration sheet. It does not describe a medical protocol and does not state a current price.",
+    "items": {
+      "bain-individuel": {
+        "name": "Individual thermal bath",
+        "summary": "A quiet immersion, in a private cabin, in the station’s warm water.",
+        "description": "The individual bath is the simplest form of balneation: a limited time in the water, then rest. Spring water is very hot; for a treatment it is brought to a bearable temperature. This sheet shows how such a care can be presented. It sets neither a protocol nor a price.",
+        "benefits": [
+          "Time away from passing traffic",
+          "Direct contact with the thermal water",
+          "A short session, easy to place in the day"
+        ],
+        "characteristics": [
+          "In a private cabin",
+          "Station water",
+          "Rest recommended after the bath"
+        ],
+        "info": "People being treated for an illness, who are pregnant, or who take medication should ask for medical advice before any session. The temperature at the spring outlet is not the temperature of the bath.",
+        "duration": "20 min (example)",
+        "price": "On request (example)"
+      },
+      "douche-thermale": {
+        "name": "Thermal shower",
+        "summary": "A jet of thermal water, often offered around the bath.",
+        "description": "The shower concentrates water on one area, with limited pressure and duration. It is presented here as a possible complement to the bath, in the register of classic thermal techniques. The sheet remains a demonstration.",
+        "benefits": [
+          "A more local application than the bath",
+          "A brief session",
+          "A simple gesture, explained before it begins"
+        ],
+        "characteristics": [
+          "Thermal water",
+          "Adjusted pressure",
+          "Short duration"
+        ],
+        "info": "Pressure and temperature are set for comfort. Any skin or vascular sensitivity should be mentioned before the session. This is not a medical indication.",
+        "duration": "10 min (example)",
+        "price": "On request (example)"
+      },
+      "massage-affusion": {
+        "name": "Massage under affusion",
+        "summary": "A massage accompanied by a stream of thermal water.",
+        "description": "Affusion lets a stream of warm water run during the massage. The gesture stays slow. This pairing is common in thermal stations; its exact availability at Korbous, its duration and its price are to be confirmed. The sheet is an example.",
+        "benefits": [
+          "The warmth of the water and the massage together",
+          "A slow pace",
+          "A relaxing session, with no therapeutic promise"
+        ],
+        "characteristics": [
+          "On a table",
+          "A stream of thermal water",
+          "Oil or water alone, according to local practice"
+        ],
+        "info": "Mention any area to avoid. The care illustrated here does not treat an illness.",
+        "duration": "30 min (example)",
+        "price": "On request (example)"
+      },
+      "enveloppement": {
+        "name": "Rest wrap",
+        "summary": "A warm, wrapped pause after contact with the water.",
+        "description": "The wrap extends the warmth of the bath: you stay lying down, covered, while the body settles. No specific ingredient — mud, seaweed or otherwise — is claimed here, in the absence of an official station sheet. The example describes only the principle of a warm rest.",
+        "benefits": [
+          "A calm extension of the bath",
+          "Little gesture, a great deal of quiet",
+          "A transition before going back outside"
+        ],
+        "characteristics": [
+          "At rest",
+          "Kept warm",
+          "Without a product whose composition is unconfirmed"
+        ],
+        "info": "Prolonged heat does not suit everyone. If in doubt, ask for advice before booking this kind of care — from a professional, not through this site.",
+        "duration": "20 min (example)",
+        "price": "On request (example)"
+      },
+      "soin-visage": {
+        "name": "Facial with thermal water",
+        "summary": "A comfort treatment for the face, using the station’s water.",
+        "description": "Thermal water is sometimes applied gently to the face, for a moment of comfort. This sheet does not describe a dermatological treatment and names no particular cosmetic active. It shows a possible wellness session, to be confirmed on site.",
+        "benefits": [
+          "A short, seated moment",
+          "A gentle application",
+          "No talk of a “skin cure”"
+        ],
+        "characteristics": [
+          "Thermal water",
+          "A comfort gesture",
+          "No promise about complexion or a skin condition"
+        ],
+        "info": "Broken skin, an ongoing dermatological treatment or a known sensitivity should be mentioned before any facial.",
+        "duration": "25 min (example)",
+        "price": "On request (example)"
+      },
+      "parcours-detente": {
+        "name": "Relaxation route",
+        "summary": "Half a day linking a bath, a pause and the shore.",
+        "description": "The route offered here is a demonstration sequence: a bath, a quiet interval, then a short walk to the shore if the weather allows. It is not an official package of the station. Order and duration may be quite different on site.",
+        "benefits": [
+          "A simple reading of a day in Korbous",
+          "Care and landscape in the same stretch of time",
+          "No commitment to a result"
+        ],
+        "characteristics": [
+          "An indicative half-day",
+          "Bath and quiet time",
+          "Time outdoors according to the weather"
+        ],
+        "info": "Bring drinking water, stable shoes and something to cover yourself after the bath. Opening hours remain to be confirmed.",
+        "duration": "3 h (example)",
+        "price": "On request (example)"
+      },
+      "seance-relaxation": {
+        "name": "Relaxation session",
+        "summary": "A guided quiet time, without a specific thermal procedure.",
+        "description": "Guided relaxation is done lying down or seated, in a quiet room. It does not necessarily use thermal water. It is presented as a possible complement to a day at the station, and only as an example.",
+        "benefits": [
+          "Time without a technical gesture",
+          "Slower breathing",
+          "A pause between two treatments"
+        ],
+        "characteristics": [
+          "Guided",
+          "Indoors",
+          "Without water, in this example"
+        ],
+        "info": "You may stop the session at any time. Nothing here constitutes psychological care.",
+        "duration": "30 min (example)",
+        "price": "On request (example)"
+      },
+      "decouverte-station": {
+        "name": "Discovering the station",
+        "summary": "An introduction to the village, the springs and how to approach the water.",
+        "description": "This discovery is a commented demonstration visit: the village, the idea of the springs, and the precautions around very hot water. It replaces neither an official guide nor a consultation. The exact route depends on what is open on the day.",
+        "benefits": [
+          "Finding your way through the village and the shore",
+          "Understanding where the water is too hot",
+          "Asking practical questions before a treatment"
+        ],
+        "characteristics": [
+          "On foot",
+          "Outdoors",
+          "No obligatory bathing"
+        ],
+        "info": "The corniche is narrow in places. A visit keeps a careful pace, especially in full sun.",
+        "duration": "45 min (example)",
+        "price": "On request (example)"
+      }
+    }
+  },
+  "gallery": {
+    "heroTitle": "Gallery",
+    "heroText": "The village, the springs and the shore of Korbous. Treatment rooms are not photographed here: the Treatments category shows thermal bathing and the setting of the station.",
+    "heroAlt": "Sunset over a Cap Bon cove, near Korbous",
+    "filters": {
+      "all": "All",
+      "facilities": "The station",
+      "pools": "Springs and water",
+      "nature": "Nature",
+      "relaxation": "Rest",
+      "treatments": "Treatments"
+    },
+    "empty": "No photograph in this category.",
+    "open": "Enlarge the photograph",
+    "prev": "Previous photograph",
+    "next": "Next photograph",
+    "items": {
+      "rue": {
+        "caption": "Korbous, between the corniche and the gulf",
+        "alt": "White village of Korbous at the foot of an ochre cliff, along the sea"
+      },
+      "ville": {
+        "caption": "The coastal road and the white houses",
+        "alt": "Coastal road, breakwater and white architecture of Korbous"
+      },
+      "station": {
+        "caption": "The village facing the sea",
+        "alt": "White houses and minaret of Korbous with the Mediterranean behind"
+      },
+      "rue-haute": {
+        "caption": "White houses on the hill",
+        "alt": "White quarter of Korbous clinging to the hill"
+      },
+      "source": {
+        "caption": "Where the hot water meets the sea",
+        "alt": "People bathing in a hot spring at Korbous, with steam where it meets the sea"
+      },
+      "kanassira": {
+        "caption": "The shore at Aïn Kanassira",
+        "alt": "Ochre rocky cove of Aïn Kanassira, near Korbous"
+      },
+      "cotes": {
+        "caption": "The coasts of Cap Bon",
+        "alt": "Cliffs and blue sea along the coast near Korbous"
+      },
+      "crique": {
+        "caption": "Layered rock at the water’s edge",
+        "alt": "Layered rock formation entering the sea near Korbous"
+      },
+      "falaise": {
+        "caption": "Hills and a cove",
+        "alt": "View from the hills over a cove on the Korbous coast"
+      },
+      "colline": {
+        "caption": "A cove seen from above",
+        "alt": "Small turquoise cove seen from the hills of Korbous"
+      },
+      "rocheuse": {
+        "caption": "The stone shore",
+        "alt": "Golden rocky shore and waves on the Korbous coast"
+      },
+      "sunset": {
+        "caption": "Evening on the gulf",
+        "alt": "Sunset over the sea, with boats in a cove near Korbous"
+      },
+      "coucher": {
+        "caption": "The corniche at dusk",
+        "alt": "Coastal road lit at dusk, along the sea at Korbous"
+      },
+      "lune": {
+        "caption": "Moonrise over the hills",
+        "alt": "Full moon rising behind the hills, seen from the Korbous shore"
+      }
+    }
+  },
+  "practical": {
+    "heroTitle": "Practical information",
+    "heroText": "Access, a few landmarks, and the questions people ask before setting out. Anything unconfirmed is marked as an example.",
+    "heroAlt": "Cove and hills on the Korbous coast",
+    "hoursTitle": "Opening hours",
+    "hoursNotice": "Demonstration hours. Confirm them before you travel: this page does not receive updates from the station.",
+    "hours": [
+      {
+        "days": "Monday – Friday",
+        "time": "8:00 – 16:00 (example)"
+      },
+      {
+        "days": "Saturday",
+        "time": "8:00 – 13:00 (example)"
+      },
+      {
+        "days": "Sunday",
+        "time": "Closed (example)"
+      }
+    ],
+    "locationTitle": "Location",
+    "locationText": "Korbous Thermal Station, Cap Bon, Nabeul governorate, Tunisia. Aïn Echfa lies 51 km east of Tunis via Hammam Lif, at a published altitude of 5 metres.",
+    "accessTitle": "How to get there",
+    "steps": [
+      "From Tunis, head toward Hammam Lif, then take the coastal road to Korbous.",
+      "The corniche winds along the cliffs: a calm drive is more pleasant.",
+      "Public-transport lines and timetables are not reproduced here, for lack of a confirmed schedule."
+    ],
+    "usefulTitle": "Useful information",
+    "useful": [
+      "The water of Aïn El Atrous emerges very hot: the published temperature is about 58.6 °C. Do not bathe at the outlet.",
+      "Stable shoes help on wet rock.",
+      "Buying a voucher on this site is a demonstration: it stays in this browser and does not reserve a place.",
+      "Bring drinking water. It is separate from the spring water."
+    ],
+    "faqTitle": "Frequently asked questions",
+    "faqs": [
+      {
+        "q": "Can I book a treatment on this site?",
+        "a": "The voucher purchase is a demonstration on this device. It sends nothing to the station and takes no payment. The contact form does not send a message either."
+      },
+      {
+        "q": "Are the prices and hours exact?",
+        "a": "Not when they are marked as examples. No official price list is displayed here."
+      },
+      {
+        "q": "Is medical advice needed?",
+        "a": "A thermal cure is prepared with a health professional. This site gives no personal indication and does not repeat the conditions listed in official documents as promises."
+      },
+      {
+        "q": "Where is Korbous?",
+        "a": "On the west coast of Cap Bon, in the Nabeul governorate, facing the Gulf of Tunis. Allow about 51 km from Tunis via Hammam Lif for Aïn Echfa."
+      },
+      {
+        "q": "Can you bathe at Aïn El Atrous?",
+        "a": "The water where it leaves the rock is scalding. Visitors stay where it mixes with the sea, and keep away from the outlet. Care is still needed, especially with children."
+      }
+    ]
+  },
+  "contact": {
+    "heroTitle": "Write to the station",
+    "heroText": "A question about the place, a treatment or the journey. The form checks your answers here. It does not send them.",
+    "heroAlt": "Sea and hills at dusk, on the Korbous shore",
+    "formTitle": "Message",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "you@example.com",
+    "phonePlaceholder": "+216 …",
+    "subjectPlaceholder": "Stay, treatment, access…",
+    "messagePlaceholder": "Your question, in a few lines.",
+    "submit": "Send the message",
+    "successTitle": "Message ready, not sent",
+    "successText": "The fields are valid. This site has no server: your text stays on this device and does not reach the station.",
+    "reset": "Write another message",
+    "errors": {
+      "name": "Enter your name (at least 2 characters).",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a number with at least 8 digits.",
+      "subject": "Enter a subject (at least 3 characters).",
+      "message": "The message must contain at least 20 characters."
+    },
+    "asideTitle": "The station",
+    "addressLabel": "Address",
+    "address": "Korbous Thermal Station, Korbous, Cap Bon, Nabeul governorate, Tunisia",
+    "emailLabel": "Email",
+    "emailValue": "contact@example.com",
+    "emailNote": "example.com is a demonstration domain. It is not the station’s inbox.",
+    "phoneLabel": "Phone",
+    "phoneValue": "+216 00 000 000",
+    "phoneNote": "A fictional number, shown as an example.",
+    "whatsapp": "Write on WhatsApp",
+    "whatsappNote": "Demonstration link. The number is not the station’s.",
+    "mapLabel": "Map of Korbous",
+    "mapOpen": "Open in OpenStreetMap"
+  },
+  "notFound": {
+    "title": "This page does not exist",
+    "text": "The link does not match any page of the station."
+  },
+  "shop": {
+    "demoBanner": "The account, order and voucher stay in this browser. No card is asked for, no message is sent, and no place is reserved at the station.",
+    "catalogueTitle": "Station vouchers",
+    "catalogueText": "Four example vouchers for a visit to Korbous. The price and the number of places are indicative.",
+    "examplePrice": "Example price",
+    "quota": "Places shown: {{count}} (example)",
+    "buy": "Choose this voucher",
+    "guestAccess": "Find an order",
+    "guestTitle": "Find an order",
+    "guestText": "Enter the email and the order number stored in this browser.",
+    "guestSubmit": "Show the order",
+    "guestError": "No order matches on this device.",
+    "orderId": "Order number",
+    "missingVoucher": "This voucher is not in the demonstration catalogue.",
+    "backCatalogue": "Back to vouchers",
+    "visitDate": "Visit date",
+    "beneficiary": "Beneficiary",
+    "quantity": "Quantity",
+    "email": "Email",
+    "phone": "Phone",
+    "summary": "Summary",
+    "total": "Total",
+    "pay": "Pay (demonstration)",
+    "payNote": "No card number is requested. The button marks the order as paid on this device only.",
+    "orderTitle": "Order {{id}}",
+    "orderMissing": "This order is not stored on this device.",
+    "orderKeep": "Keep this number to find the order again in this browser.",
+    "paid": "Paid (demonstration)",
+    "voucher": "Voucher",
+    "placed": "Placed on",
+    "voucherNumber": "Voucher number",
+    "invoiceNumber": "Invoice",
+    "statusIssued": "Issued",
+    "downloadPdf": "Download the PDF",
+    "resend": "Send again",
+    "pdfNotice": "The PDF file is an example. It is not generated and it is not sent.",
+    "resendNotice": "Sending again is an example. No email and no WhatsApp message leave this device.",
+    "qrNote": "This pattern is not a code the station can read.",
+    "viewOrder": "View the order",
+    "accountTitle": "My account",
+    "hello": "Hello {{name}}",
+    "emptyOrders": "No order on this device.",
+    "emptyVouchers": "No voucher issued.",
+    "emptyInvoices": "No invoice.",
+    "saveProfile": "Save the profile",
+    "profileSaved": "Profile saved on this device.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "language": "Account language",
+    "password": "Password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm the password",
+    "registerTitle": "Create an account",
+    "registerText": "Demonstration customer account. It stays in this browser.",
+    "registerSubmit": "Create the account",
+    "hasAccount": "Already have an account?",
+    "loginLink": "Log in",
+    "loginTitle": "Log in",
+    "loginText": "Use the account created on this device.",
+    "loginSubmit": "Log in",
+    "registerLink": "Create an account",
+    "forgotLink": "Forgot password",
+    "forgotTitle": "Forgot password",
+    "forgotText": "Enter the email of the account stored in this browser, then choose a new password.",
+    "forgotSubmit": "Continue",
+    "resetSubmit": "Save the password",
+    "resetDone": "Password updated on this device.",
+    "tabs": {
+      "profile": "Profile",
+      "orders": "Orders",
+      "vouchers": "Vouchers",
+      "invoices": "Invoices"
+    },
+    "errors": {
+      "firstName": "Enter your first name (at least 2 characters).",
+      "lastName": "Enter your last name (at least 2 characters).",
+      "profile": "Enter a first name and a last name, at least 2 characters each.",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a number with at least 8 digits.",
+      "password": "The password must contain at least 8 characters.",
+      "confirm": "The passwords do not match.",
+      "duplicate": "This email is already stored on this device.",
+      "invalid": "Incorrect email or password.",
+      "unknownEmail": "No account with this email on this device.",
+      "date": "Choose a date from today onward.",
+      "beneficiary": "Enter the beneficiary’s name (at least 2 characters).",
+      "quantity": "Choose a quantity between 1 and 4."
+    },
+    "items": {
+      "bain-jour": {
+        "name": "Thermal bath voucher",
+        "summary": "An example admission for an individual bath at the station.",
+        "duration": "45 min (example)",
+        "imageAlt": "Hot spring at Korbous, where the water meets the sea"
+      },
+      "demi-journee": {
+        "name": "Half-day voucher",
+        "summary": "A bath and quiet time, shown as an example half-day.",
+        "duration": "3 h (example)",
+        "imageAlt": "Ochre cove near Korbous"
+      },
+      "journee": {
+        "name": "Day voucher",
+        "summary": "An example day at the station, without a medical protocol.",
+        "duration": "1 day (example)",
+        "imageAlt": "Korbous corniche at dusk"
+      },
+      "decouverte": {
+        "name": "Discovery voucher",
+        "summary": "A commented visit of the village and the springs. The exact route depends on what is open.",
+        "duration": "45 min (example)",
+        "imageAlt": "Layered rock at the water’s edge, near Korbous"
+      }
+    },
+    "statusUsed": "Used",
+    "statusCancelled": "Cancelled",
+    "orderCancelled": "Order cancelled",
+    "orderRefunded": "Order refunded"
+  },
+  "admin": {
+    "demo": "Demonstration in this browser",
+    "loginTitle": "Administration",
+    "loginText": "Demonstration access. It opens the dashboard stored on this device.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Enter",
+    "invalid": "Access refused.",
+    "search": "Search",
+    "nav": {
+      "dashboard": "Dashboard",
+      "orders": "Orders",
+      "vouchers": "Vouchers",
+      "customers": "Customers",
+      "invoices": "Invoices",
+      "catalogue": "Catalogue",
+      "site": "View the site",
+      "logout": "Leave",
+      "menu": "Open the menu",
+      "accounts": "Accounts",
+      "requests": "Quotes"
+    },
+    "home": {
+      "title": "Dashboard",
+      "text": "The figures cover orders stored in this browser.",
+      "customers": "Customers",
+      "orders": "Paid orders",
+      "vouchers": "Issued vouchers",
+      "revenue": "Example amount",
+      "recent": "Latest orders",
+      "activity": "Activity",
+      "empty": "Nothing yet."
+    },
+    "orders": {
+      "title": "Orders",
+      "empty": "No order.",
+      "cancel": "Cancel",
+      "confirm": "Confirm cancellation",
+      "blocked": "A voucher already used prevents cancelling the order.",
+      "text": "Reference, customer, product, payment and status for every order.",
+      "customer": "Customer",
+      "product": "Product",
+      "quantity": "Quantity",
+      "total": "Total",
+      "customerType": "Customer type",
+      "payment": "Payment",
+      "created": "Created",
+      "types": {
+        "public": "Public",
+        "wholesale": "Wholesale",
+        "partner": "Partner"
+      },
+      "pay": {
+        "unpaid": "Unpaid",
+        "paid": "Paid",
+        "refunded": "Refunded"
+      },
+      "state": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "paid": "Paid",
+        "cancelled": "Cancelled",
+        "refunded": "Refunded"
+      }
+    },
+    "order": {
+      "missing": "Order not found",
+      "back": "Back to orders",
+      "phone": "Phone",
+      "vouchers": "Vouchers in this order",
+      "customer": "Customer",
+      "payment": "Payment",
+      "history": "History",
+      "notes": "Internal notes",
+      "notePlaceholder": "Note visible only in the admin",
+      "addNote": "Add note",
+      "edit": "Edit order",
+      "save": "Save",
+      "refund": "Refund",
+      "refundBlocked": "A voucher that was already used blocks the refund.",
+      "issue": "Issue a voucher for this order",
+      "validFrom": "Valid from",
+      "validUntil": "Valid until",
+      "saved": "Saved on this device.",
+      "invalid": "Check the fields you entered.",
+      "guest": "No account",
+      "account": "Account",
+      "currency": "Currency",
+      "unitPrice": "Unit price",
+      "events": {
+        "created": "Order created",
+        "updated": "Order updated · {{detail}}",
+        "status": "Status: {{detail}}",
+        "payment": "Payment: {{detail}}",
+        "note": "Note: {{detail}}",
+        "cancel": "Order cancelled",
+        "refund": "Refund recorded",
+        "voucher": "Voucher {{detail}}"
+      }
+    },
+    "vouchers": {
+      "title": "Vouchers",
+      "empty": "No voucher.",
+      "use": "Mark as used",
+      "cancel": "Cancel the voucher",
+      "text": "Issue a voucher, attach it to an order, and track whether it was used.",
+      "generate": "Issue a voucher",
+      "email": "Customer email",
+      "order": "Order",
+      "product": "Product",
+      "validity": "Validity",
+      "status": "Status",
+      "used": "Used",
+      "save": "Save voucher",
+      "missingOrder": "That order was not found.",
+      "edit": "Edit",
+      "issued": "Issued"
+    },
+    "customers": {
+      "title": "Customers",
+      "empty": "No customer.",
+      "orders": "orders",
+      "guestNote": "Purchases without an account appear in Orders, not in this list."
+    },
+    "invoices": {
+      "title": "Invoices",
+      "empty": "No invoice."
+    },
+    "catalogue": {
+      "title": "Catalogue",
+      "text": "The price and the number of places remain examples. Hiding a voucher removes it from the shop.",
+      "price": "Example price (TND)",
+      "quota": "Places shown",
+      "active": "Visible in the shop",
+      "save": "Save",
+      "saved": "Saved on this device.",
+      "invalid": "Enter a whole price above 0 and a number of places from 0 to 99."
+    },
+    "status": {
+      "label": "Status",
+      "paid": "Paid",
+      "cancelled": "Cancelled"
+    },
+    "activity": {
+      "order": "Order {{ref}} recorded",
+      "cancel-order": "Order {{ref}} cancelled",
+      "use-voucher": "Voucher {{ref}} marked used",
+      "cancel-voucher": "Voucher {{ref}} cancelled",
+      "catalogue": "Catalogue updated: {{ref}}",
+      "refund": "Order {{ref}} refunded",
+      "update-order": "Order {{ref}} updated",
+      "note": "Note added to {{ref}}",
+      "issue-voucher": "Voucher {{ref}} issued",
+      "voucher-status": "Voucher {{ref}} updated",
+      "account": "Customer account updated: {{ref}}",
+      "partner": "Partner updated: {{ref}}",
+      "credit": "Partner credit: {{ref}}",
+      "staff": "Staff account updated: {{ref}}",
+      "request": "Request {{ref}} created",
+      "request-status": "Status updated for request {{ref}}",
+      "request-assign": "Request {{ref}} assigned",
+      "request-note": "Note on request {{ref}}",
+      "request-quote": "Quote updated for {{ref}}",
+      "request-contact": "Customer contacted for {{ref}}"
+    },
+    "accounts": {
+      "denied": "This area belongs to another role.",
+      "clientsTitle": "Customers",
+      "clientsText": "Profiles, orders and vouchers. Passwords are never shown.",
+      "partnersTitle": "Partners",
+      "partnersText": "Requests, credit limit and balance. A charge above the limit is refused.",
+      "agentsTitle": "Agents",
+      "agentsText": "Agent accounts, permissions and recorded operations.",
+      "operatorsTitle": "Station operators",
+      "operatorsText": "Voucher validation and each operator’s history.",
+      "tabs": {
+        "clients": "Customers",
+        "partners": "Partners",
+        "agents": "Agents",
+        "operators": "Operators"
+      },
+      "filters": {
+        "all": "All",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "active": "Active",
+      "inactive": "Inactive",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "language": "Language",
+      "orderHistory": "Order history",
+      "vouchers": "Vouchers",
+      "purchased": "{{count}} purchased",
+      "used": "{{count}} used",
+      "newPartner": "New request",
+      "emptyPartners": "No partners.",
+      "company": "Company",
+      "contact": "Contact",
+      "creditLimit": "Credit limit",
+      "creditUsed": "Credit used",
+      "creditLeft": "Credit remaining",
+      "creditAlert": "The credit limit has been reached.",
+      "creditBlocked": "This amount is above the authorized limit.",
+      "partnerInactive": "The partner is not active.",
+      "approve": "Approve",
+      "reject": "Reject",
+      "editPartner": "Information",
+      "creditMove": "Credit movement",
+      "amount": "Amount",
+      "charge": "Charge",
+      "payment": "Record payment",
+      "creditHistory": "Credit history",
+      "emptyCredit": "No movements.",
+      "kinds": {
+        "charge": "Charge",
+        "payment": "Payment"
+      },
+      "partnerStatus": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      },
+      "duplicate": "This email is already used.",
+      "newStaff": "New account",
+      "emptyStaff": "No accounts.",
+      "newPassword": "New password",
+      "permissions": "Permissions",
+      "activity": "Activity",
+      "permission": {
+        "customers": {
+          "read": "View customers",
+          "write": "Edit customers"
+        },
+        "orders": {
+          "read": "View orders",
+          "write": "Edit orders"
+        },
+        "vouchers": {
+          "read": "View vouchers",
+          "validate": "Validate vouchers"
+        },
+        "partners": {
+          "read": "View partners",
+          "write": "Edit partners"
+        },
+        "catalogue": {
+          "read": "View the catalogue"
+        },
+        "staff": {
+          "read": "View staff",
+          "write": "Edit staff"
+        },
+        "requests": {
+          "read": "View quotes and requests",
+          "write": "Handle quotes and requests"
+        }
+      }
+    },
+    "requests": {
+      "title": "Quotes and requests",
+      "text": "Flights, Umrah, car rental and stays. Each request keeps its quote, agent and history.",
+      "empty": "No requests.",
+      "customer": "Customer",
+      "category": "Category",
+      "summary": "Detail",
+      "agent": "Agent",
+      "created": "Created",
+      "categories": {
+        "flight": "Flights",
+        "omra": "Umrah",
+        "car": "Cars",
+        "stay": "Stays"
+      },
+      "state": {
+        "new": "New",
+        "in_progress": "In progress",
+        "waiting_customer": "Waiting for customer",
+        "quotation_sent": "Quote sent",
+        "accepted": "Accepted",
+        "rejected": "Rejected",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "fields": {
+        "flight": {
+          "departureCity": "Departure city",
+          "destination": "Destination",
+          "departureDate": "Departure date",
+          "returnDate": "Return date",
+          "passengers": "Number of passengers",
+          "passengerInfo": "Passenger information",
+          "special": "Special requirements"
+        },
+        "omra": {
+          "travelers": "Number of travelers",
+          "departureDate": "Preferred departure date",
+          "accommodation": "Accommodation preferences",
+          "packagePref": "Package preferences",
+          "extra": "Additional requests"
+        },
+        "car": {
+          "vehicle": "Vehicle category",
+          "pickupLocation": "Pickup location",
+          "pickupDate": "Pickup date",
+          "returnDate": "Return date",
+          "driver": "Driver information",
+          "extra": "Additional requirements"
+        },
+        "stay": {
+          "destination": "Destination",
+          "checkIn": "Check-in date",
+          "checkOut": "Check-out date",
+          "guests": "Number of guests",
+          "accommodation": "Accommodation type",
+          "services": "Requested services"
+        }
+      }
+    },
+    "request": {
+      "back": "Back to requests",
+      "create": "New request",
+      "save": "Save request",
+      "saved": "Saved.",
+      "invalid": "Complete the customer, email and required fields. The return date must follow the departure.",
+      "missing": "Request not found.",
+      "customer": "Customer",
+      "assign": "Assign to an agent",
+      "unassigned": "Unassigned",
+      "noAgent": "No active agent. Create one in Accounts.",
+      "emailAction": "Email",
+      "call": "Call",
+      "accept": "Accept",
+      "reject": "Reject",
+      "notes": "Internal notes",
+      "notePlaceholder": "Note visible only to the team",
+      "addNote": "Add note",
+      "quotes": "Quotes",
+      "newQuote": "New quote",
+      "line": "Service",
+      "amount": "Amount",
+      "addLine": "Add a line",
+      "removeLine": "Remove",
+      "total": "Total",
+      "currency": "Currency",
+      "message": "Message to the customer",
+      "saveQuote": "Save prices",
+      "send": "Send quote",
+      "draft": "Draft",
+      "sent": "Sent",
+      "sentOn": "Sent on {{date}}",
+      "history": "History",
+      "details": "Request",
+      "events": {
+        "created": "Request created — {{detail}}",
+        "status": "Status: {{detail}}",
+        "assign": "Assigned to {{detail}}",
+        "note": "Internal note added",
+        "quote": "Quote {{detail}} created",
+        "price": "Prices updated on quote {{detail}}",
+        "send": "Quote {{detail}} sent",
+        "contact": "Customer contacted: {{detail}}"
+      }
+    }
+  },
+  "catalog": {
+    "listTitle": "Product catalog",
+    "listText": "Products, prices, vouchers and photos stored in this browser.",
+    "create": "New product",
+    "empty": "No products.",
+    "search": "Search products",
+    "reference": "Reference",
+    "category": "Category",
+    "active": "Active",
+    "inactive": "Inactive",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "edit": "Edit",
+    "view": "View",
+    "delete": "Delete",
+    "confirmDelete": "Confirm deletion",
+    "back": "Back to the catalog",
+    "save": "Save",
+    "saved": "Saved.",
+    "invalid": "The reference needs 3 to 24 letters, digits or hyphens, and prices must be zero or more.",
+    "duplicate": "This reference already exists.",
+    "details": "Product details",
+    "languages": "Languages",
+    "completion": "{{filled}} / {{total}}",
+    "fields": {
+      "name": "Name",
+      "summary": "Short description",
+      "description": "Full description",
+      "conditions": "Conditions",
+      "extra": "Additional information"
+    },
+    "pricing": "Pricing",
+    "publicPrice": "Public price",
+    "wholesalePrice": "Wholesale price",
+    "partnerPrice": "Price by customer type",
+    "currency": "Currency",
+    "history": "Price history",
+    "historyEmpty": "No price change recorded.",
+    "voucher": "Voucher",
+    "voucherType": "Voucher type",
+    "types": {
+      "dated": "Dated",
+      "open": "Open",
+      "pack": "Package"
+    },
+    "validDays": "Validity (days)",
+    "validFrom": "Valid from",
+    "validUntil": "Valid until",
+    "maxUses": "Allowed uses",
+    "requiresBeneficiary": "Beneficiary required",
+    "quota": "Listed places",
+    "yes": "Yes",
+    "no": "No",
+    "photos": "Photos",
+    "photosHelp": "Up to six images. The main photo is outlined.",
+    "upload": "Add photos",
+    "main": "Main",
+    "setMain": "Set as main",
+    "removePhoto": "Remove",
+    "library": "Site gallery",
+    "tooLarge": "An image is over 1.2 MB and was not added.",
+    "missing": "Product not found.",
+    "categories": {
+      "baths": "Baths",
+      "stays": "Stays",
+      "discovery": "Discovery",
+      "wellness": "Wellness"
+    },
+    "customCategory": "Other category",
+    "priceNote": "The shop shows the public price. The other prices stay in the catalog.",
+    "dateOutside": "This date is outside the voucher validity period."
+  }
+}

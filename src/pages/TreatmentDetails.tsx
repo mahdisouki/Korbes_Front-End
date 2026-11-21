@@ -1,0 +1,123 @@
+import { ArrowRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { Link, useParams } from 'react-router-dom'
+import { Button } from '../components/common/Button.tsx'
+import { creditFor } from '../data/credits.ts'
+import { routes, treatmentPath } from '../data/routes.ts'
+import { getTreatment, treatments } from '../data/treatments.ts'
+import { useObjectList } from '../hooks/useObjectList.ts'
+import { usePageMeta } from '../hooks/usePageMeta.ts'
+
+export function TreatmentDetails() {
+  const { slug } = useParams()
+  const { t } = useTranslation()
+  const treatment = getTreatment(slug)
+  const name = treatment ? t(`treatments.items.${treatment.slug}.name`) : t('treatments.notFoundTitle')
+  usePageMeta(t('meta.treatment.title', { name }), t('meta.treatment.description', { name }))
+
+  if (!treatment) {
+    return (
+      <section className="bg-beige px-5 py-40 text-center">
+        <h1 className="font-display text-5xl text-med">{t('treatments.notFoundTitle')}</h1>
+        <p className="mx-auto mt-4 max-w-md text-mist">{t('treatments.notFoundText')}</p>
+        <Button to={routes.treatments} className="mt-8">
+          {t('common.backTreatments')}
+        </Button>
+      </section>
+    )
+  }
+
+  return <TreatmentSheet slug={treatment.slug} image={treatment.image} imageId={treatment.imageId} />
+}
+
+function TreatmentSheet({ slug, image, imageId }: { slug: string; image: string; imageId: string }) {
+  const { t } = useTranslation()
+  const base = `treatments.items.${slug}`
+  const benefits = useObjectList<string>(`${base}.benefits`)
+  const characteristics = useObjectList<string>(`${base}.characteristics`)
+  const credit = creditFor(image)
+  const others = treatments.filter((item) => item.slug !== slug).slice(0, 3)
+
+  return (
+    <>
+      <section className="relative isolate min-h-[70vh]">
+        <img src={image} alt={t(`gallery.items.${imageId}.alt`)} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-med-deep via-med-deep/40 to-med/20" />
+        <div className="relative z-10 mx-auto flex min-h-[70vh] w-full max-w-6xl flex-col justify-end px-5 pb-14 pt-36 sm:px-8">
+          <p className="eyebrow text-aqua">{t('common.demo')}</p>
+          <h1 className="mt-4 max-w-3xl font-display text-5xl text-white sm:text-6xl">{t(`${base}.name`)}</h1>
+          <p className="mt-4 max-w-2xl text-lg text-white/85">{t(`${base}.summary`)}</p>
+        </div>
+      </section>
+      <section className="bg-beige py-16 sm:py-20">
+        <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.3fr_0.7fr]">
+          <div>
+            <p className="text-lg leading-relaxed text-ink">{t(`${base}.description`)}</p>
+            <h2 className="mt-12 font-display text-3xl text-med">{t('treatments.benefitsTitle')}</h2>
+            <ul className="mt-5 space-y-3">
+              {benefits.map((item) => (
+                <li key={item} className="rounded-2xl bg-white px-5 py-4 text-ink shadow-sm">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <h2 className="mt-12 font-display text-3xl text-med">{t('treatments.characteristicsTitle')}</h2>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-3">
+              {characteristics.map((item) => (
+                <li key={item} className="rounded-2xl bg-aqua px-4 py-4 text-sm text-med">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <h2 className="mt-12 font-display text-3xl text-med">{t('treatments.infoTitle')}</h2>
+            <p className="mt-4 leading-relaxed text-mist">{t(`${base}.info`)}</p>
+            {credit ? (
+              <p className="mt-8 text-xs text-mist">
+                <a href={credit.source} target="_blank" rel="noreferrer" className="underline-offset-2 hover:underline">
+                  {t('common.photoBy', { author: credit.author, license: credit.license })}
+                </a>
+              </p>
+            ) : null}
+          </div>
+          <aside className="h-fit rounded-[1.75rem] bg-white p-7 shadow-[0_24px_60px_-36px_rgba(12, 30, 124),0.55)] lg:sticky lg:top-28">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-turquoise">{t('common.demo')}</p>
+            <dl className="mt-5 space-y-4">
+              <div>
+                <dt className="text-sm text-mist">{t('common.duration')}</dt>
+                <dd className="mt-1 text-xl text-med" dir="ltr">
+                  {t(`${base}.duration`)}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-sm text-mist">{t('common.price')}</dt>
+                <dd className="mt-1 text-xl text-med">{t(`${base}.price`)}</dd>
+              </div>
+            </dl>
+            <p className="mt-5 text-sm leading-relaxed text-mist">{t('treatments.disclaimer')}</p>
+            <Button to={routes.contact} className="mt-6 w-full">
+              {t('treatments.cta')}
+              <ArrowRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden />
+            </Button>
+            <Link to={routes.treatments} className="mt-4 block text-center text-sm text-turquoise">
+              {t('common.backTreatments')}
+            </Link>
+          </aside>
+        </div>
+        <div className="mx-auto mt-16 w-full max-w-6xl px-5 sm:px-8">
+          <h2 className="font-display text-3xl text-med">{t('home.featured.all')}</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {others.map((item) => (
+              <Link
+                key={item.slug}
+                to={treatmentPath(item.slug)}
+                className="rounded-2xl bg-white p-5 ring-1 ring-med/5 transition hover:bg-aqua"
+              >
+                <span className="font-display text-2xl text-med">{t(`treatments.items.${item.slug}.name`)}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}

@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Outfit", "Segoe UI", sans-serif;
+  --color-med: #0c1e7c;
+  --color-med-deep: #0c1e7c;
+  --color-turquoise: #0c1e7c;
+  --color-turquoise-deep: #6f8ca4;
+  --color-aqua: #e5eaef;
+  --color-beige: #f3f6f8;
+  --color-sand: #d1dae2;
+  --color-ink: #0c1e7c;
+  --color-mist: #6f8ca4;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-beige);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html[lang="ar"] {
+    --font-sans: "Cairo", "Outfit", sans-serif;
+    --font-display: "Cairo", Georgia, serif;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  ::selection {
+    background: #0c1e7c;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #0c1e7c;
+    outline-offset: 3px;
+  }
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+html[lang="ar"] .eyebrow {
+  letter-spacing: 0.06em;
+}
+
+@keyframes photo-drift {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1.14) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+.photo-drift {
+  animation: photo-drift 22s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.lift {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -28px rgba(12, 30, 124, 0.45);
+}
+
+button.bg-turquoise:hover,
+a.bg-turquoise:hover,
+button.bg-med:hover,
+a.bg-med:hover {
+  background-color: #6f8ca4;
+  color: #0c1e7c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .photo-drift,
+  .lift,
+  .lift:hover {
+    animation: none;
+    transform: none;
+  }
+}
