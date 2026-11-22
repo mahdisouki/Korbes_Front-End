@@ -1,3 +1,12 @@
+export function formatMillimes(millimes: number, language: string) {
+  return new Intl.NumberFormat(language, {
+    style: 'currency',
+    currency: 'TND',
+    minimumFractionDigits: 3,
+    maximumFractionDigits: 3,
+  }).format(Number(millimes || 0) / 1000)
+}
+
 export function formatMoney(amount: number, language: string, currency = 'TND') {
   const code = currency || 'TND'
   return new Intl.NumberFormat(language, {
