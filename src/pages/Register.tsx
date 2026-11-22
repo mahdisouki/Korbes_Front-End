@@ -1,14 +1,14 @@
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
-import { DemoNote } from '../components/account/DemoNote.tsx'
 import { SelectField, TextField } from '../components/account/Fields.tsx'
-import { registerUser } from '../data/accountStore.ts'
 import { routes } from '../data/routes.ts'
 import { usePageMeta } from '../hooks/usePageMeta.ts'
 import { languages, type LanguageCode } from '../i18n/index.ts'
+import { ApiError, apiJson, apiLocale } from '../lib/api.ts'
+import { applySession, type SessionUser } from '../lib/session.ts'
 
-type Field = 'firstName' | 'lastName' | 'email' | 'phone' | 'password'
+type Field = 'firstName' | 'lastName' | 'email' | 'phone' | 'password' | 'form'
 type Errors = Partial<Record<Field, string>>
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -29,8 +29,9 @@ export function Register() {
   const [password, setPassword] = useState('')
   const [language, setLanguage] = useState<LanguageCode>(initialLanguage)
   const [errors, setErrors] = useState<Errors>({})
+  const [submitting, setSubmitting] = useState(false)
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const next: Errors = {}
     if (firstName.trim().length < 2) next.firstName = t('shop.errors.firstName')
@@ -43,29 +44,46 @@ export function Register() {
       document.getElementById(Object.keys(next)[0] ?? '')?.focus()
       return
     }
-    const result = registerUser({ firstName, lastName, email, phone, password, language })
-    if (result === 'duplicate') {
-      setErrors({ email: t('shop.errors.duplicate') })
-      document.getElementById('email')?.focus()
-      return
+    setSubmitting(true)
+    try {
+      const body = await apiJson<{ data: { accessToken: string; refreshToken: string; user: SessionUser } }>(
+        '/auth/register',
+        {
+          method: 'POST',
+          headers: { 'Accept-Language': apiLocale(language) },
+          body: JSON.stringify({
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            email: email.trim(),
+            phone: phone.trim(),
+            password,
+            language: apiLocale(language),
+          }),
+        },
+      )
+      applySession(body.data)
+      void i18n.changeLanguage(language)
+      navigate(routes.account)
+    } catch (err) {
+      setErrors({
+        email: err instanceof ApiError && err.status === 409 ? t('shop.errors.duplicate') : undefined,
+        form: err instanceof ApiError && err.status === 409 ? undefined : t('shop.errors.order'),
+      })
+      setSubmitting(false)
     }
-    void i18n.changeLanguage(language)
-    navigate(routes.account)
   }
 
   return (
     <section className="bg-beige px-5 pb-20 pt-32 sm:px-8">
       <div className="mx-auto w-full max-w-xl">
-        <p className="eyebrow text-turquoise">{t('common.demo')}</p>
         <h1 className="mt-3 font-display text-5xl text-med">{t('shop.registerTitle')}</h1>
         <p className="mt-4 leading-relaxed text-mist">{t('shop.registerText')}</p>
-        <div className="mt-6">
-          <DemoNote>{t('shop.demoBanner')}</DemoNote>
-        </div>
         <form
-          onSubmit={onSubmit}
+          onSubmit={(event) => {
+            void onSubmit(event)
+          }}
           noValidate
-          className="mt-6 space-y-5 rounded-[1.75rem] bg-white p-7 shadow-[0_24px_60px_-36px_rgba(12, 30, 124),0.45)] sm:p-9"
+          className="mt-6 space-y-5 rounded-[1.75rem] bg-white p-7 shadow-[0_24px_60px_-36px_rgba(12,30,124,0.45)] sm:p-9"
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <TextField
@@ -129,11 +147,13 @@ export function Register() {
               </option>
             ))}
           </SelectField>
+          {errors.form ? <p className="text-sm text-med">{errors.form}</p> : null}
           <button
             type="submit"
-            className="w-full rounded-full bg-turquoise px-6 py-3 text-sm font-medium text-white transition hover:bg-turquoise-deep"
+            disabled={submitting}
+            className="w-full rounded-full bg-turquoise px-6 py-3 text-sm font-medium text-white transition hover:bg-turquoise-deep disabled:opacity-60"
           >
-            {t('shop.registerSubmit')}
+            {submitting ? t('shop.submitting') : t('shop.registerSubmit')}
           </button>
           <p className="text-sm text-mist">
             {t('shop.hasAccount')}{' '}

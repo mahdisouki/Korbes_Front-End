@@ -27,13 +27,7 @@ export function Footer() {
     <footer className="bg-med-deep text-white">
       <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-[1.4fr_0.8fr_0.8fr]">
         <div>
-          <div className="flex items-center gap-3">
-            <Logo className="h-20 w-auto" />
-            <div>
-              <p className="font-display text-3xl leading-none">Korbous</p>
-              <p className="eyebrow mt-2 text-[0.62rem] text-aqua">{t('nav.brand')}</p>
-            </div>
-          </div>
+          <Logo className="h-20 w-auto" />
           <p className="mt-5 max-w-sm leading-relaxed text-white/75">{t('footer.tagline')}</p>
         </div>
         <div>

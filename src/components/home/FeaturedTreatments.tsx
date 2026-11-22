@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next'
-import { treatments } from '../../data/treatments.ts'
 import { routes } from '../../data/routes.ts'
+import { usePublicTreatments } from '../../hooks/usePublicTreatments.ts'
 import { Button } from '../common/Button.tsx'
 import { SectionTitle } from '../common/SectionTitle.tsx'
 import { TreatmentCard } from '../common/TreatmentCard.tsx'
 
 export function FeaturedTreatments() {
   const { t } = useTranslation()
+  const { status, treatments } = usePublicTreatments()
   const featured = treatments.filter((treatment) => treatment.featured)
+  if (status !== 'loading' && featured.length === 0) return null
 
   return (
     <section className="bg-beige py-20 sm:py-28">

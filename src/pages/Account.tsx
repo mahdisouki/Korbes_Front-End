@@ -1,55 +1,77 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, Navigate } from 'react-router-dom'
-import { DemoNote } from '../components/account/DemoNote.tsx'
-import { SelectField, TextField } from '../components/account/Fields.tsx'
 import { VoucherActions } from '../components/account/VoucherActions.tsx'
-import { logoutUser, updateProfile, voucherStatus, voucherStatusKey } from '../data/accountStore.ts'
-import { labelForReference } from '../data/catalog.ts'
-import { formatDay, formatMoney, formatWhen } from '../data/format.ts'
+import { formatDay, formatMillimes, formatWhen } from '../data/format.ts'
 import { orderPath, routes } from '../data/routes.ts'
-import { useLedger, useUser } from '../hooks/useAccount.ts'
-import { useCatalog } from '../hooks/useCatalog.ts'
+import { logout, useUser } from '../hooks/useAccount.ts'
 import { usePageMeta } from '../hooks/usePageMeta.ts'
-import { languages, type LanguageCode } from '../i18n/index.ts'
+import { usePublicVouchers } from '../hooks/usePublicVouchers.ts'
+import { ApiError, apiBlob, apiJson, saveBlob } from '../lib/api.ts'
+import type { ApiIssuedVoucher, ApiOrder } from '../lib/orders.ts'
 
 type Tab = 'profile' | 'orders' | 'vouchers' | 'invoices'
 
-function isLanguage(value: string): value is LanguageCode {
-  return languages.some((language) => language.code === value)
+interface ApiInvoice {
+  _id?: string
+  id?: string
+  number: string
+  total: number
+  createdAt: string
 }
 
 export function Account() {
   const { t, i18n } = useTranslation()
   const user = useUser()
-  const ledger = useLedger()
-  const products = useCatalog()
-  const [tab, setTab] = useState<Tab>('profile')
+  const { vouchers: catalogue } = usePublicVouchers()
+  const [tab, setTab] = useState<Tab>('orders')
+  const [orders, setOrders] = useState<ApiOrder[]>([])
+  const [issued, setIssued] = useState<ApiIssuedVoucher[]>([])
+  const [invoices, setInvoices] = useState<ApiInvoice[]>([])
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
   usePageMeta(t('meta.account.title'), t('meta.account.description'))
+
+  useEffect(() => {
+    if (!user) return
+    let alive = true
+    Promise.all([
+      apiJson<{ data: ApiOrder[] }>('/orders'),
+      apiJson<{ data: ApiIssuedVoucher[] }>('/me/vouchers'),
+      apiJson<{ data: ApiInvoice[] }>('/me/invoices'),
+    ])
+      .then(([orderBody, voucherBody, invoiceBody]) => {
+        if (!alive) return
+        setOrders(orderBody.data || [])
+        setIssued(voucherBody.data || [])
+        setInvoices(invoiceBody.data || [])
+        setStatus('ready')
+      })
+      .catch(() => {
+        if (alive) setStatus('error')
+      })
+    return () => {
+      alive = false
+    }
+  }, [user])
 
   if (!user) return <Navigate to={routes.login} replace state={{ from: routes.account }} />
 
-  const orders = ledger.orders.filter((order) => order.userId === user.id)
-  const vouchers = ledger.vouchers.filter((voucher) => voucher.userId === user.id)
-  const invoices = ledger.invoices.filter((invoice) => invoice.userId === user.id)
   const tabs: Tab[] = ['profile', 'orders', 'vouchers', 'invoices']
 
   return (
     <section className="bg-beige px-5 pb-20 pt-32 sm:px-8">
       <div className="mx-auto w-full max-w-4xl">
-        <p className="eyebrow text-turquoise">{t('common.demo')}</p>
-        <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
-          <h1 className="font-display text-5xl text-med">{t('shop.hello', { name: user.firstName })}</h1>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h1 className="font-display text-5xl text-med">{t('shop.hello', { name: user.firstName || user.email })}</h1>
           <button
             type="button"
             className="rounded-full border border-med/15 px-5 py-2.5 text-sm font-medium text-med transition hover:bg-white"
-            onClick={logoutUser}
+            onClick={() => {
+              void logout()
+            }}
           >
             {t('nav.logout')}
           </button>
-        </div>
-        <div className="mt-6">
-          <DemoNote>{t('shop.demoBanner')}</DemoNote>
         </div>
         <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label={t('shop.accountTitle')}>
           {tabs.map((item) => (
@@ -68,25 +90,40 @@ export function Account() {
           ))}
         </div>
         <div className="mt-6" role="tabpanel">
-          {tab === 'profile' ? <Profile userId={user.id} firstName={user.firstName} lastName={user.lastName} phone={user.phone} language={user.language} /> : null}
-          {tab === 'orders' ? (
+          {status === 'loading' && tab !== 'profile' ? <p className="text-sm text-mist">{t('shop.accountLoading')}</p> : null}
+          {status === 'error' && tab !== 'profile' ? <p className="text-sm text-med">{t('shop.accountError')}</p> : null}
+          {tab === 'profile' ? (
+            <dl className="grid gap-4 rounded-[1.75rem] bg-white p-7 sm:grid-cols-2">
+              <Item label={t('shop.firstName')} value={user.firstName || '—'} />
+              <Item label={t('shop.lastName')} value={user.lastName || '—'} />
+              <Item label={t('shop.email')} value={user.email} ltr />
+              <Item label={t('shop.language')} value={user.language} ltr />
+            </dl>
+          ) : null}
+          {tab === 'orders' && status === 'ready' ? (
             orders.length === 0 ? (
               <Empty text={t('shop.emptyOrders')} />
             ) : (
               <ul className="space-y-4">
-                {orders.map((order) => (
+                {orders.map((order) => {
+                  const line = order.lines[0]
+                  const name = catalogue.find((item) => item.id === line?.voucherTypeId)?.name || t('shop.voucher')
+                  return (
                     <li key={order.id} className="rounded-[1.75rem] bg-white p-6">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
                           <p className="font-medium text-med" dir="ltr">
-                            {order.id}
+                            {order.orderCode}
                           </p>
-                          <p className="mt-1 text-ink">{labelForReference(products, order.voucherSlug, i18n.language)}</p>
+                          <p className="mt-1 text-ink">{name}</p>
                           <p className="mt-1 text-sm text-mist">
-                            {formatDay(order.visitDate, i18n.language)} · {formatWhen(order.createdAt, i18n.language)}
+                            {line ? formatDay(line.visitDate, i18n.language) : '—'} · {formatWhen(order.createdAt, i18n.language)}
                           </p>
                         </div>
-                        <p className="font-medium text-ink">{formatMoney(order.unitPrice * order.quantity, i18n.language, order.currency)}</p>
+                        <div className="text-end">
+                          <p className="font-medium text-ink">{formatMillimes(order.total, i18n.language)}</p>
+                          <p className="mt-1 text-sm text-mist">{labelFor(t, 'shop.orderStatus', order.status)}</p>
+                        </div>
                       </div>
                       <Link
                         to={orderPath(order.id)}
@@ -95,38 +132,39 @@ export function Account() {
                         {t('shop.viewOrder')}
                       </Link>
                     </li>
-                ))}
+                  )
+                })}
               </ul>
             )
           ) : null}
-          {tab === 'vouchers' ? (
-            vouchers.length === 0 ? (
+          {tab === 'vouchers' && status === 'ready' ? (
+            issued.length === 0 ? (
               <Empty text={t('shop.emptyVouchers')} />
             ) : (
               <ul className="space-y-4">
-                {vouchers.map((voucher) => (
+                {issued.map((voucher) => (
                   <li key={voucher.id} className="rounded-[1.75rem] bg-white p-6">
                     <p className="text-sm text-mist">{t('shop.voucherNumber')}</p>
                     <p className="mt-1 font-display text-3xl text-med" dir="ltr">
-                      {voucher.number}
+                      {voucher.publicId}
                     </p>
                     <p className="mt-2 text-sm text-ink">
-                      {labelForReference(products, voucher.voucherSlug, i18n.language)} · {formatDay(voucher.visitDate, i18n.language)}
+                      {(catalogue.find((item) => item.id === voucher.voucherTypeId)?.name || t('shop.voucher'))} · {formatDay(voucher.visitDate, i18n.language)}
                     </p>
-                    <p className="mt-1 text-sm font-medium text-turquoise-deep">{t(voucherStatusKey(voucherStatus(voucher)))}</p>
-                    <VoucherActions number={voucher.number} />
+                    <p className="mt-1 text-sm font-medium text-turquoise-deep">{labelFor(t, 'shop.voucherStatus', voucher.status)}</p>
+                    <VoucherActions voucherId={voucher.id} publicId={voucher.publicId} />
                   </li>
                 ))}
               </ul>
             )
           ) : null}
-          {tab === 'invoices' ? (
+          {tab === 'invoices' && status === 'ready' ? (
             invoices.length === 0 ? (
               <Empty text={t('shop.emptyInvoices')} />
             ) : (
               <ul className="space-y-4">
                 {invoices.map((invoice) => (
-                  <InvoiceRow key={invoice.id} number={invoice.number} amount={invoice.amount} issuedAt={invoice.issuedAt} />
+                  <InvoiceRow key={invoice.id || invoice._id} invoice={invoice} />
                 ))}
               </ul>
             )
@@ -135,6 +173,12 @@ export function Account() {
       </div>
     </section>
   )
+}
+
+function labelFor(t: (key: string) => string, prefix: string, status: string) {
+  const key = `${prefix}.${status}`
+  const label = t(key)
+  return label === key ? status : label
 }
 
 function Empty({ text }: { text: string }) {
@@ -149,106 +193,47 @@ function Empty({ text }: { text: string }) {
   )
 }
 
-function Profile({
-  userId,
-  firstName,
-  lastName,
-  phone,
-  language,
-}: {
-  userId: string
-  firstName: string
-  lastName: string
-  phone: string
-  language: LanguageCode
-}) {
-  const { t, i18n } = useTranslation()
-  const [given, setGiven] = useState(firstName)
-  const [family, setFamily] = useState(lastName)
-  const [tel, setTel] = useState(phone)
-  const [lang, setLang] = useState<LanguageCode>(language)
-  const [saved, setSaved] = useState(false)
-  const [error, setError] = useState('')
-
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (given.trim().length < 2 || family.trim().length < 2) {
-      setError(t('shop.errors.profile'))
-      setSaved(false)
-      return
-    }
-    if (tel.replace(/\D/g, '').length < 8) {
-      setError(t('shop.errors.phone'))
-      setSaved(false)
-      return
-    }
-    updateProfile(userId, { firstName: given, lastName: family, phone: tel, language: lang })
-    void i18n.changeLanguage(lang)
-    setError('')
-    setSaved(true)
-  }
-
+function Item({ label, value, ltr = false }: { label: string; value: string; ltr?: boolean }) {
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5 rounded-[1.75rem] bg-white p-7">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <TextField id="firstName" label={t('shop.firstName')} autoComplete="given-name" value={given} onChange={(event) => setGiven(event.target.value)} />
-        <TextField id="lastName" label={t('shop.lastName')} autoComplete="family-name" value={family} onChange={(event) => setFamily(event.target.value)} />
-      </div>
-      <TextField id="phone" type="tel" dir="ltr" label={t('shop.phone')} autoComplete="tel" value={tel} onChange={(event) => setTel(event.target.value)} />
-      <SelectField
-        id="language"
-        label={t('shop.language')}
-        value={lang}
-        onChange={(event) => {
-          if (isLanguage(event.target.value)) setLang(event.target.value)
-        }}
-      >
-        {languages.map((item) => (
-          <option key={item.code} value={item.code}>
-            {item.label}
-          </option>
-        ))}
-      </SelectField>
-      {error ? <p className="text-sm text-med">{error}</p> : null}
-      <button type="submit" className="rounded-full bg-turquoise px-6 py-3 text-sm font-medium text-white transition hover:bg-turquoise-deep">
-        {t('shop.saveProfile')}
-      </button>
-      {saved ? (
-        <p role="status" className="text-sm text-med">
-          {t('shop.profileSaved')}
-        </p>
-      ) : null}
-    </form>
+    <div>
+      <dt className="text-sm text-mist">{label}</dt>
+      <dd className="mt-1 font-medium text-ink" dir={ltr ? 'ltr' : undefined}>
+        {value}
+      </dd>
+    </div>
   )
 }
 
-function InvoiceRow({ number, amount, issuedAt }: { number: string; amount: number; issuedAt: string }) {
+function InvoiceRow({ invoice }: { invoice: ApiInvoice }) {
   const { t, i18n } = useTranslation()
-  const [notice, setNotice] = useState(false)
+  const [notice, setNotice] = useState('')
+  const id = String(invoice.id || invoice._id || '')
 
   return (
     <li className="rounded-[1.75rem] bg-white p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <p className="font-medium text-med" dir="ltr">
-            {number}
+            {invoice.number}
           </p>
-          <p className="mt-1 text-sm text-mist">{formatWhen(issuedAt, i18n.language)}</p>
+          <p className="mt-1 text-sm text-mist">{formatWhen(invoice.createdAt, i18n.language)}</p>
         </div>
-        <p className="font-medium text-ink">{formatMoney(amount, i18n.language)}</p>
+        <p className="font-medium text-ink">{formatMillimes(invoice.total, i18n.language)}</p>
       </div>
       <button
         type="button"
         className="mt-4 rounded-full bg-aqua px-5 py-2.5 text-sm font-medium text-med"
-        onClick={() => setNotice(true)}
+        onClick={() => {
+          void apiBlob(`/invoices/${id}/pdf`)
+            .then((blob) => saveBlob(blob, `${invoice.number}.pdf`))
+            .catch((err: unknown) => {
+              setNotice(err instanceof ApiError && err.code === 'pdf_not_ready' ? t('shop.pdfMissing') : t('shop.errors.order'))
+            })
+        }}
       >
         {t('shop.downloadPdf')}
       </button>
-      {notice ? (
-        <p role="status" className="mt-3 text-sm leading-relaxed text-med">
-          {t('shop.pdfNotice')}
-        </p>
-      ) : null}
+      {notice ? <p className="mt-3 text-sm text-med">{notice}</p> : null}
     </li>
   )
 }

@@ -3,9 +3,8 @@ import { AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { logoutUser } from '../../data/accountStore.ts'
 import { routes } from '../../data/routes.ts'
-import { useUser } from '../../hooks/useAccount.ts'
+import { logout, useUser } from '../../hooks/useAccount.ts'
 import { useLockBody } from '../../hooks/useLockBody.ts'
 import { Button } from '../common/Button.tsx'
 import { LanguageSelector } from '../common/LanguageSelector.tsx'
@@ -22,6 +21,21 @@ const links = [
   { to: routes.contact, key: 'nav.contact' },
 ] as const
 
+function hasDarkHero(pathname: string) {
+  if (
+    pathname === routes.home ||
+    pathname === routes.about ||
+    pathname === routes.treatments ||
+    pathname === routes.gallery ||
+    pathname === routes.practical ||
+    pathname === routes.contact ||
+    pathname === routes.vouchers
+  ) {
+    return true
+  }
+  return pathname.startsWith(`${routes.treatments}/`)
+}
+
 export function Navbar() {
   const { t } = useTranslation()
   const user = useUser()
@@ -29,6 +43,7 @@ export function Navbar() {
   const [solid, setSolid] = useState(() => window.scrollY > 24)
   const [open, setOpen] = useState(false)
   const [menuPath, setMenuPath] = useState(pathname)
+  const overDarkHero = hasDarkHero(pathname)
 
   if (menuPath !== pathname) {
     setMenuPath(pathname)
@@ -39,25 +54,22 @@ export function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 24)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [pathname])
 
-  const light = !solid && !open
+  const light = overDarkHero && !solid && !open
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition duration-300 ${
-        solid ? 'border-b border-sand bg-white/95 backdrop-blur' : 'bg-transparent'
+        solid || !overDarkHero ? 'border-b border-sand bg-white/95 backdrop-blur' : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-        <NavLink to={routes.home} className="flex items-center gap-3" aria-label={t('nav.homeLabel')}>
+        <NavLink to={routes.home} className="flex items-center" aria-label={t('nav.homeLabel')}>
           <Logo className="h-14 w-auto sm:h-16" />
-          <span className={`hidden min-[380px]:block ${light ? 'text-white' : 'text-med'}`}>
-            <span className="block font-display text-2xl leading-none sm:text-[1.7rem]">Korbous</span>
-            <span className="eyebrow mt-1 block text-[0.62rem] opacity-80">{t('nav.brand')}</span>
-          </span>
         </NavLink>
 
         <nav className="hidden items-center gap-4 xl:flex" aria-label={t('nav.primary')}>
@@ -97,7 +109,9 @@ export function Navbar() {
               </Link>
               <button
                 type="button"
-                onClick={logoutUser}
+                onClick={() => {
+                  void logout()
+                }}
                 className={`hidden rounded-full px-3 py-2 text-sm sm:inline ${light ? 'text-white/85' : 'text-mist'}`}
               >
                 {t('nav.logout')}

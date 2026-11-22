@@ -3,21 +3,19 @@ import { useTranslation } from 'react-i18next'
 import { FilterBar } from '../components/common/FilterBar.tsx'
 import { PageHero } from '../components/common/PageHero.tsx'
 import { TreatmentCard } from '../components/common/TreatmentCard.tsx'
-import { treatmentCategories, treatments } from '../data/treatments.ts'
 import { usePageMeta } from '../hooks/usePageMeta.ts'
-import type { TreatmentCategory } from '../types/index.ts'
+import { usePublicTreatments } from '../hooks/usePublicTreatments.ts'
+import { treatmentCategories, type TreatmentCategory } from '../types/index.ts'
 
 export function Treatments() {
   const { t } = useTranslation()
   usePageMeta(t('meta.treatments.title'), t('meta.treatments.description'))
+  const { status, treatments } = usePublicTreatments()
   const [category, setCategory] = useState<TreatmentCategory>('all')
 
   const visible = useMemo(
-    () =>
-      category === 'all'
-        ? treatments
-        : treatments.filter((treatment) => treatment.category === category),
-    [category],
+    () => (category === 'all' ? treatments : treatments.filter((treatment) => treatment.category === category)),
+    [category, treatments],
   )
 
   const options = treatmentCategories.map((id) => ({
@@ -45,15 +43,16 @@ export function Treatments() {
             />
             <p className="text-sm text-mist">{t('treatments.count', { count: visible.length })}</p>
           </div>
-          {visible.length === 0 ? (
-            <p className="mt-12 text-mist">{t('treatments.empty')}</p>
-          ) : (
+          {status === 'loading' ? <p className="mt-12 text-mist">{t('treatments.loading')}</p> : null}
+          {status === 'error' ? <p className="mt-12 text-mist">{t('treatments.loadError')}</p> : null}
+          {status === 'ready' && visible.length === 0 ? <p className="mt-12 text-mist">{t('treatments.empty')}</p> : null}
+          {status === 'ready' && visible.length > 0 ? (
             <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {visible.map((treatment) => (
-                <TreatmentCard key={treatment.slug} treatment={treatment} />
+                <TreatmentCard key={treatment.id} treatment={treatment} />
               ))}
             </div>
-          )}
+          ) : null}
         </div>
       </section>
     </>
